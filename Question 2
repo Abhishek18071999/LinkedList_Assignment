@@ -1,0 +1,56 @@
+//Inserting the node at any position
+public class LinkedListAssignment {
+    Node head;
+    class Node{
+        int data;
+        Node next;
+        Node(int d){
+            data = d;
+            next = null;
+        }
+    }
+    public void insertAtEnd(int newData){
+        Node newNode = new Node(newData);
+        if(head == null){
+            head = new Node(newData);
+            return;
+        }
+        newNode.next = null;
+        Node temp = head;
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        temp.next = newNode;
+        return;
+    }
+    // insert at any position
+    public void insertAtAnyPos(Node pos, int value){
+        Node newNode = new Node(value);
+        if(pos.next == null){
+            System.out.println("Position cannot contain null value");
+        }
+        newNode.next = pos.next;
+        pos.next = newNode;
+        
+    }
+    public void display(){
+        Node curr = head;
+        while(curr != null){
+            System.out.print(curr.data+" ");
+            curr = curr.next;
+        }
+    }
+    public static void main(String[] args) {
+        LinkedListAssignment ll = new LinkedListAssignment();
+        ll.insertAtEnd(1);
+        ll.insertAtEnd(2);
+        ll.insertAtEnd(4);
+        ll.insertAtEnd(5);
+        ll.insertAtEnd(6);
+        ll.display();
+        System.out.println();
+        ll.insertAtAnyPos(ll.head.next, 3);
+        ll.display();
+
+    }
+}
