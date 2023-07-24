@@ -1,0 +1,75 @@
+// Addition of two LinkedLIst
+import java.util.LinkedList;
+
+public class LinkedListAssignment {
+    Node head;
+    class Node{
+        int data;
+        Node next;
+        Node(int d){
+            data = d;
+            next = null;
+        }
+    }
+    public void insertAtEnd(int newData){
+        Node newNode = new Node(newData);
+        if(head == null){
+            head = new Node(newData);
+            return;
+        }
+        newNode.next = null;
+        Node temp = head;
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        temp.next = newNode;
+        return;
+    }
+//Addition of two LinkedList
+public int addition(){
+    Node temp = head;
+    int num = temp.data;
+    while(temp.next != null){
+        temp = temp.next;
+        num = (num*10) + temp.data;
+    }
+    return num;
+}
+//LinkedList from sum
+public void LinkedListFromSum(int sum){
+    String sumString = Integer.toString(sum);
+    for(int i = 0;i<sumString.length();i++){
+        int digit = Character.getNumericValue(sumString.charAt(i));
+        insertAtEnd(digit);
+
+    }
+}
+    public void display(){
+        Node curr = head;
+        while(curr != null){
+            System.out.print(curr.data+" ");
+            curr = curr.next;
+        }
+    }
+    public static void main(String[] args) {
+        LinkedListAssignment ll = new LinkedListAssignment();
+        LinkedListAssignment ll1 = new LinkedListAssignment();
+        LinkedListAssignment ll2 = new LinkedListAssignment();
+        ll.insertAtEnd(5);
+        ll.insertAtEnd(6);
+        ll.insertAtEnd(3);
+        ll1.insertAtEnd(8);
+        ll1.insertAtEnd(4);
+        ll1.insertAtEnd(2);
+        ll.display();
+        System.out.println();
+        ll1.display();
+        System.out.println();  
+        ll.addition();  
+        int add1 = ll.addition() + ll1.addition();
+        ll2.LinkedListFromSum(add1);
+        ll2.display();        
+ 
+
+    }
+}
